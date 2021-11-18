@@ -1,0 +1,11 @@
+name: tfds-kaggle-chest-xray-images
+channels:
+  - apple
+  - conda-forge
+  - defaults
+dependencies:
+  - tensorflow-deps
+  - pip
+  - pip:
+      - tensorflow-macos
+      - tensorflow-datasets=4.4.0
