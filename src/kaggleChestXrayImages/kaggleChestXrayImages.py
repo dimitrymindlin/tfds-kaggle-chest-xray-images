@@ -1,6 +1,7 @@
 """kaggleChestXrayImages dataset."""
 
 import tensorflow_datasets as tfds
+import os
 
 _DESCRIPTION = """
 Context
@@ -87,13 +88,13 @@ class Kagglechestxrayimages(tfds.core.GeneratorBasedBuilder):
         #extracted_path = dl_manager.extract(path)
 
         return {
-            'train': self._generate_examples(path / 'chest_xray/train'),
-            'test': self._generate_examples(path / 'chest_xray/test')
+            'train': self._generate_examples(os.path.join(path, 'chest_xray/train')),
+            'test': self._generate_examples(os.path.join(path, 'chest_xray/test'))
         }
 
     def _generate_examples(self, path):
         """Yields examples."""
-        for img_path in (path/'NORMAL').glob('*.jpeg'):
+        for img_path in (os.path.join(path, 'NORMAL')).glob('*.jpeg'):
             yield img_path.name, {
                 'name': img_path.name.split("-")[1], # patient id
                 'image': img_path,
@@ -101,7 +102,7 @@ class Kagglechestxrayimages(tfds.core.GeneratorBasedBuilder):
                 'image_num': img_path.name.split("-")[2],  # image number of a patient
             }
 
-        for img_path in (path/'PNEUNOMIA').glob('*.jpeg'):
+        for img_path in (os.path.join(path, 'PNEUNOMIA')).glob('*.jpeg'):
             yield img_path.name, {
                 'name': img_path.name.split("-")[1], # patient id
                 'image': img_path,
