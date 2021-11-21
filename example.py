@@ -1,4 +1,5 @@
 import tensorflow_datasets as tfds
+from src.kaggleChestXrayImages import Kagglechestxrayimages
 
 (ds_train, ds_test), ds_info = tfds.load(
         'Kagglechestxrayimages',
