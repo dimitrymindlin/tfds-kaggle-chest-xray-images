@@ -103,7 +103,7 @@ class Kagglechestxrayimages(tfds.core.GeneratorBasedBuilder):
                 'image_num': img_path.name.split("-")[2],  # image number of a patient
             }
 
-        for img_path in (Path(os.path.join(path, 'PNEUNOMIA'))).glob('*.jpeg'):
+        for img_path in (Path(os.path.join(path, 'PNEUMONIA'))).glob('*.jpeg'):
             yield img_path.name, {
                 'name': img_path.name.split("-")[1], # patient id
                 'image': img_path,
