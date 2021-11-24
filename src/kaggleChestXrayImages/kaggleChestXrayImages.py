@@ -70,7 +70,7 @@ class Kagglechestxrayimages(tfds.core.GeneratorBasedBuilder):
             features=tfds.features.FeaturesDict({
                 # These are the features of your dataset like images, labels ...
                 'name': tfds.features.Text(),  # patient id
-                'image': tfds.features.Image(shape=(224, 224, 3)),
+                'image': tfds.features.Image(),
                 'image_num': tfds.features.Text(),  # image number of a patient
                 'label': tfds.features.ClassLabel(names=['NORMAL', 'DISEASE']),
             }),
